@@ -6,3 +6,20 @@ Content-Type: application/json
     "email":"jt@hm.com",
     "password":"123456"
 }
+
+### Login sin conexion a BDD
+
+POST http://127.0.0.1:3000/auth/login
+Content-Type: application/json
+
+{
+
+    "name":"prueba2",
+    "email":"jt2@hm.com",
+    "password":"1234567"
+
+}
+
+### users
+GET http://127.0.0.1:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3OTQ0OTI1NjcsImV4cCI6MTc5NDQ5MjYyN30.njSkobFHgOLkk1nGfAlhqPwDJ5cXiFiPeiITauBir8A
