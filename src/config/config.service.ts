@@ -7,29 +7,17 @@ export class ConfigService {
   private readonly envConfig: { [key: string]: string };
 
   constructor() {
-    const isDevelopmentEnv = process.env.NODE_ENV !== 'production';
-
-    if (isDevelopmentEnv) {
-      const envFilePath = process.cwd() + '/.env.development';
-      const existsPath = fs.existsSync(envFilePath);
+    const env = process.env.NODE_ENV || 'development';
+    const envFilePath = `${process.cwd()}/.env.${env}`;
+    const existsPath = fs.existsSync(envFilePath);
 
       if (!existsPath) {
-        console.log('.env.development no existe DEVELOPMENT');
+        console.log(`.env.${env} no existe`);
         process.exit(0);
       }
 
       this.envConfig = parse(fs.readFileSync(envFilePath));
-    } else {
-      const envFilePath = process.cwd() + '/.env.production';
-      const existsPath = fs.existsSync(envFilePath);
-
-      if (!existsPath) {
-        console.log('.env.production no existe PRODUCTION');
-        process.exit(0);
-      }
-
-      this.envConfig = parse(fs.readFileSync(envFilePath));
-    }
+    //console.log("*********", envFilePath)
   }
 
   get(key: string): string {
